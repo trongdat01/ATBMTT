@@ -1,0 +1,408 @@
+BÀI TẬP NHÓM 1
+NỘI DUNG MÃ HÓA BÀI TẬP AES-128
+Đang tìm file: d:/Download/CODE/AES/inputAES.txt
+Đã đọc 2 dòng từ file.
+M = 18DC9095F9149EDB7323F20E4E462D92
+K = CFD61D489E7C48BC46C9F875C1F04E1B
+
+PHẦN 1: SINH 10 KHÓA Ki từ khóa K, i = 1, 2, ..., 10.
+
+1. Chia khóa K (128 bit) thành 4 word (32 bit)
+Input: K = CFD61D489E7C48BC46C9F875C1F04E1B
+Output: w0 = CFD61D48, Output: w1 = 9E7C48BC, Output: w2 = 46C9F875, Output: w3 = C1F04E1B
+
+2. Dịch vòng trái 1 byte đối với w3 (32 bit)
+Input: w3 = C1F04E1B
+Output: rw = RotWord(w3) = F04E1BC1
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = F04E1BC1
+Output: sw = SubWord(rw) = 8C2FAF78
+
+4. sw XORbit với Rcon[0]
+Input: sw = 8C2FAF78; RC[1] = 01000000
+Output: xcsw = XorRcon(sw, RC[1]) = 8D2FAF78
+
+5. Tính khóa K1 = (w4, w5, w6, w7)
+Input: xcsw = 8D2FAF78; w0, w1, w2, w3 (kết quả bài 1);
+Output: w4 = XORbit(xcsw, w0) = 42F9B230
+w5 = XORbit(w4, w1) = DC85FA8C
+w6 = XORbit(w5, w2) = 9A4C02F9
+w7 = XORbit(w6, w3) = 5BBC4CE2
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w7 (32 bit)
+Input: w7 = 5BBC4CE2
+Output: rw = RotWord(w7) = BC4CE25B
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = BC4CE25B
+Output: sw = SubWord(rw) = 65299839
+
+4. sw XORbit với Rcon[1]
+Input: sw = 65299839; RC[2] = 02000000
+Output: xcsw = XorRcon(sw, RC[2]) = 67299839
+
+5. Tính khóa K2 = (w8, w9, w10, w11)
+Input: xcsw = 67299839; w0, w1, w2, w3 (kết quả bài 1);
+Output: w8 = XORbit(xcsw, w4) = 25D02A09
+w9 = XORbit(w8, w5) = F955D085
+w10 = XORbit(w9, w6) = 6319D27C
+w11 = XORbit(w10, w7) = 38A59E9E
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w11 (32 bit)
+Input: w11 = 38A59E9E
+Output: rw = RotWord(w11) = A59E9E38
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = A59E9E38
+Output: sw = SubWord(rw) = 060B0B07
+
+4. sw XORbit với Rcon[2]
+Input: sw = 060B0B07; RC[3] = 04000000
+Output: xcsw = XorRcon(sw, RC[3]) = 020B0B07
+
+5. Tính khóa K3 = (w12, w13, w14, w15)
+Input: xcsw = 020B0B07; w0, w1, w2, w3 (kết quả bài 1);
+Output: w12 = XORbit(xcsw, w8) = 27DB210E
+w13 = XORbit(w12, w9) = DE8EF18B
+w14 = XORbit(w13, w10) = BD9723F7
+w15 = XORbit(w14, w11) = 8532BD69
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w15 (32 bit)
+Input: w15 = 8532BD69
+Output: rw = RotWord(w15) = 32BD6985
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 32BD6985
+Output: sw = SubWord(rw) = 237AF997
+
+4. sw XORbit với Rcon[3]
+Input: sw = 237AF997; RC[4] = 08000000
+Output: xcsw = XorRcon(sw, RC[4]) = 2B7AF997
+
+5. Tính khóa K4 = (w16, w17, w18, w19)
+Input: xcsw = 2B7AF997; w0, w1, w2, w3 (kết quả bài 1);
+Output: w16 = XORbit(xcsw, w12) = 0CA1D899
+w17 = XORbit(w16, w13) = D22F2912
+w18 = XORbit(w17, w14) = 6FB80AE5
+w19 = XORbit(w18, w15) = EA8AB78C
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w19 (32 bit)
+Input: w19 = EA8AB78C
+Output: rw = RotWord(w19) = 8AB78CEA
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 8AB78CEA
+Output: sw = SubWord(rw) = 7EA96487
+
+4. sw XORbit với Rcon[4]
+Input: sw = 7EA96487; RC[5] = 10000000
+Output: xcsw = XorRcon(sw, RC[5]) = 6EA96487
+
+5. Tính khóa K5 = (w20, w21, w22, w23)
+Input: xcsw = 6EA96487; w0, w1, w2, w3 (kết quả bài 1);
+Output: w20 = XORbit(xcsw, w16) = 6208BC1E
+w21 = XORbit(w20, w17) = B027950C
+w22 = XORbit(w21, w18) = DF9F9FE9
+w23 = XORbit(w22, w19) = 35152865
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w23 (32 bit)
+Input: w23 = 35152865
+Output: rw = RotWord(w23) = 15286535
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 15286535
+Output: sw = SubWord(rw) = 59344D96
+
+4. sw XORbit với Rcon[5]
+Input: sw = 59344D96; RC[6] = 20000000
+Output: xcsw = XorRcon(sw, RC[6]) = 79344D96
+
+5. Tính khóa K6 = (w24, w25, w26, w27)
+Input: xcsw = 79344D96; w0, w1, w2, w3 (kết quả bài 1);
+Output: w24 = XORbit(xcsw, w20) = 1B3CF188
+w25 = XORbit(w24, w21) = AB1B6484
+w26 = XORbit(w25, w22) = 7484FB6D
+w27 = XORbit(w26, w23) = 4191D308
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w27 (32 bit)
+Input: w27 = 4191D308
+Output: rw = RotWord(w27) = 91D30841
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 91D30841
+Output: sw = SubWord(rw) = 81663083
+
+4. sw XORbit với Rcon[6]
+Input: sw = 81663083; RC[7] = 40000000
+Output: xcsw = XorRcon(sw, RC[7]) = C1663083
+
+5. Tính khóa K7 = (w28, w29, w30, w31)
+Input: xcsw = C1663083; w0, w1, w2, w3 (kết quả bài 1);
+Output: w28 = XORbit(xcsw, w24) = DA5AC10B
+w29 = XORbit(w28, w25) = 7141A58F
+w30 = XORbit(w29, w26) = 05C55EE2
+w31 = XORbit(w30, w27) = 44548DEA
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w31 (32 bit)
+Input: w31 = 44548DEA
+Output: rw = RotWord(w31) = 548DEA44
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 548DEA44
+Output: sw = SubWord(rw) = 205D871B
+
+4. sw XORbit với Rcon[7]
+Input: sw = 205D871B; RC[8] = 80000000
+Output: xcsw = XorRcon(sw, RC[8]) = A05D871B
+
+5. Tính khóa K8 = (w32, w33, w34, w35)
+Input: xcsw = A05D871B; w0, w1, w2, w3 (kết quả bài 1);
+Output: w32 = XORbit(xcsw, w28) = 7A074610
+w33 = XORbit(w32, w29) = 0B46E39F
+w34 = XORbit(w33, w30) = 0E83BD7D
+w35 = XORbit(w34, w31) = 4AD73097
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w35 (32 bit)
+Input: w35 = 4AD73097
+Output: rw = RotWord(w35) = D730974A
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = D730974A
+Output: sw = SubWord(rw) = 0E0488D6
+
+4. sw XORbit với Rcon[8]
+Input: sw = 0E0488D6; RC[9] = 1B000000
+Output: xcsw = XorRcon(sw, RC[9]) = 150488D6
+
+5. Tính khóa K9 = (w36, w37, w38, w39)
+Input: xcsw = 150488D6; w0, w1, w2, w3 (kết quả bài 1);
+Output: w36 = XORbit(xcsw, w32) = 6F03CEC6
+w37 = XORbit(w36, w33) = 64452D59
+w38 = XORbit(w37, w34) = 6AC69024
+w39 = XORbit(w38, w35) = 2011A0B3
+
+LẶP LẠI từ Bài 2 đến Bài 5 để tạo các khóa tiếp theo
+
+2. Dịch vòng trái 1 byte đối với w39 (32 bit)
+Input: w39 = 2011A0B3
+Output: rw = RotWord(w39) = 11A0B320
+
+3. Thay thế từng byte trong rw bằng bảng S-box SubWord
+Input: rw = 11A0B320
+Output: sw = SubWord(rw) = 82E06DB7
+
+4. sw XORbit với Rcon[9]
+Input: sw = 82E06DB7; RC[10] = 36000000
+Output: xcsw = XorRcon(sw, RC[10]) = B4E06DB7
+
+5. Tính khóa K10 = (w40, w41, w42, w43)
+Input: xcsw = B4E06DB7; w0, w1, w2, w3 (kết quả bài 1);
+Output: w40 = XORbit(xcsw, w36) = DBE3A371
+w41 = XORbit(w40, w37) = BFA68E28
+w42 = XORbit(w41, w38) = D5601E0C
+w43 = XORbit(w42, w39) = F571BEBF
+
+PHẦN 2: MÃ HÓA
+
+6. Tính kết quả AddRoundKey
+Input: M = 18DC9095F9149EDB7323F20E4E462D92
+K = CFD61D489E7C48BC46C9F875C1F04E1B
+Output: state = AddRoundKey(M, K) = D767358F0A68EAB68DD60A63DD677B89
+
+======================== VÒNG LẶP THỨ 1 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = D767358F0A68EAB68DD60A63DD677B89
+Output: state = SubByte(state) = 0E8596736745874E5DF667FBC18521A7
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = 0E8596736745874E5DF667FBC18521A7
+Output: state = ShiftRows(state) = 0E4567A767F621735D85964EC18587FB
+
+9. Trộn các byte trong state MixColumns
+Input: state = 0E4567A767F621735D85964EC18587FB
+Output: state = MixColumns(state) = 138A77659D804698F6A33D6871B947B7
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = 138A77659D804698F6A33D6871B947B7
+Ki = 42F9B230DC85FA8C9A4C02F95BBC4CE2
+Output: state = AddRoundKey(state, Ki) = 5156ED3E64050A2444593F244135BE55
+
+======================== VÒNG LẶP THỨ 2 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = 5156ED3E64050A2444593F244135BE55
+Output: state = SubByte(state) = D1B155B2436B67361BCB75368396AEFC
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = D1B155B2436B67361BCB75368396AEFC
+Output: state = ShiftRows(state) = D16B75FC43CBAEB21B96553683B16736
+
+9. Trộn các byte trong state MixColumns
+Input: state = D16B75FC43CBAEB21B96553683B16736
+Output: state = MixColumns(state) = 8D644F95DC9502DFF4E57D828465A624
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = 8D644F95DC9502DFF4E57D828465A624
+Ki = 25D02A09F955D0856319D27C38A59E9E
+Output: state = AddRoundKey(state, Ki) = A89D2CAD0CC01B7ADE35AF1C8DE0DABA
+
+======================== VÒNG LẶP THỨ 3 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = A89D2CAD0CC01B7ADE35AF1C8DE0DABA
+Output: state = SubByte(state) = C25E7195FEBAAFDA1D96799C5DE157F4
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = C25E7195FEBAAFDA1D96799C5DE157F4
+Output: state = ShiftRows(state) = C2BA79F4FE9657951DE171DA5D5EAF9C
+
+9. Trộn các byte trong state MixColumns
+Input: state = C2BA79F4FE9657951DE171DA5D5EAF9C
+Output: state = MixColumns(state) = C7D28D6D84A562E9A98D6B186B97F935
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = C7D28D6D84A562E9A98D6B186B97F935
+Ki = 27DB210EDE8EF18BBD9723F78532BD69
+Output: state = AddRoundKey(state, Ki) = E00C30E85F2BF5DB887C48A5651C0E5C
+
+======================== VÒNG LẶP THỨ 4 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = E00C30E85F2BF5DB887C48A5651C0E5C
+Output: state = SubByte(state) = E1FE049BCFF1E6B9C41052064D9CAB4A
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = E1FE049BCFF1E6B9C41052064D9CAB4A
+Output: state = ShiftRows(state) = E1F1524ACF10AB9BC49C04B94DFEE606
+
+9. Trộn các byte trong state MixColumns
+Input: state = E1F1524ACF10AB9BC49C04B94DFEE606
+Output: state = MixColumns(state) = C9A46A0F859224DC915280A6639D6EC3
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = C9A46A0F859224DC915280A6639D6EC3
+Ki = 0CA1D899D22F29126FB80AE5EA8AB78C
+Output: state = AddRoundKey(state, Ki) = C57605E524BD9C56497B8A11FA8F8B4F
+
+======================== VÒNG LẶP THỨ 5 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = C57605E524BD9C56497B8A11FA8F8B4F
+Output: state = SubByte(state) = A6386BD9367ADEB13B217E822D733D84
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = A6386BD9367ADEB13B217E822D733D84
+Output: state = ShiftRows(state) = A67A7E8436213DD93B736BB12D38DE82
+
+9. Trộn các byte trong state MixColumns
+Input: state = A67A7E8436213DD93B736BB12D38DE82
+Output: state = MixColumns(state) = 2354B7E6EBEA1DEF39D1562C4EA62F8E
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = 2354B7E6EBEA1DEF39D1562C4EA62F8E
+Ki = 6208BC1EB027950CDF9F9FE935152865
+Output: state = AddRoundKey(state, Ki) = 41E468D3E3CD82FA8544C90450AAC6EB
+
+======================== VÒNG LẶP THỨ 6 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = 41E468D3E3CD82FA8544C90450AAC6EB
+Output: state = SubByte(state) = 8369456611BD132D971BDDF253ACB4E9
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = 8369456611BD132D971BDDF253ACB4E9
+Output: state = ShiftRows(state) = 83BDDDE9111BB46697AC452D536913F2
+
+9. Trộn các byte trong state MixColumns
+Input: state = 83BDDDE9111BB46697AC452D536913F2
+Output: state = MixColumns(state) = F577BF37DD86D350B236C611FC461170
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = F577BF37DD86D350B236C611FC461170
+Ki = 1B3CF188AB1B64847484FB6D4191D308
+Output: state = AddRoundKey(state, Ki) = EEDCCB76E19D57C143523DC274C27C78
+
+======================== VÒNG LẶP THỨ 7 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = EEDCCB76E19D57C143523DC274C27C78
+Output: state = SubByte(state) = 28861F38F85E5B781A002725922510BC
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = 28861F38F85E5B781A002725922510BC
+Output: state = ShiftRows(state) = 285E27BCF80010381A251F7892865B25
+
+9. Trộn các byte trong state MixColumns
+Input: state = 285E27BCF80010381A251F7892865B25
+Output: state = MixColumns(state) = 2941E762C3F090733C0989E4D04DCD3A
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = 2941E762C3F090733C0989E4D04DCD3A
+Ki = DA5AC10B7141A58F05C55EE244548DEA
+Output: state = AddRoundKey(state, Ki) = F330E22699B15527FDACD769DBC22FD0
+
+======================== VÒNG LẶP THỨ 8 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = F330E22699B15527FDACD769DBC22FD0
+Output: state = SubByte(state) = 0D0498F7EEC8FCCC54910EF9B9251570
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = 0D0498F7EEC8FCCC54910EF9B9251570
+Output: state = ShiftRows(state) = 0DC80E70EE9115F7542598CCB904FCF9
+
+9. Trộn các byte trong state MixColumns
+Input: state = 0DC80E70EE9115F7542598CCB904FCF9
+Output: state = MixColumns(state) = 27E449318D1F5758936115C260574EC1
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = 27E449318D1F5758936115C260574EC1
+Ki = 7A0746100B46E39F0E83BD7D4AD73097
+Output: state = AddRoundKey(state, Ki) = 5DEF477B8A59D48FD582A8F270C83356
+
+======================== VÒNG LẶP THỨ 9 ===========
+
+7. Thay thế từng byte trong state bằng bảng S-box SubByte
+Input: state = 5DEF477B8A59D48FD582A8F270C83356
+Output: state = SubByte(state) = 4CDFA0217ECB48730313C28951E8C3B1
+
+8. Dịch vòng trái các byte trong state ShiftRows
+Input: state = 4CDFA0217ECB48730313C28951E8C3B1
+Output: state = ShiftRows(state) = 4CCBC2B17E13C32103E8A07351DF4889
+
+9. Trộn các byte trong state MixColumns
+Input: state = 4CCBC2B17E13C32103E8A07351DF4889
+Output: state = MixColumns(state) = AD2DD0A42B279310F64025AB19A59E6D
+
+10. Thêm khóa vào state AddRoundKey
+Input: state = AD2DD0A42B279310F64025AB19A59E6D
+Ki = 6F03CEC664452D596AC690242011A0B3
+Output: state = AddRoundKey(state, Ki) = C249BA8428625501386DB50BDFFCBADE
+
+===================== VÒNG LẶP THỨ 10 ===========
+
+11. Vòng lặp cuối (lần lặp 10)
+Input: state = C249BA8428625501386DB50BDFFCBADE
+K10 = DBE3A371BFA68E28D5601E0CF571BEBF
+Output: C = state = AddRoundKey(ShiftRows(SubByte(state)), K10) = FE1500E8D79A942EA43EEAC2EF13F094
+
+Kết quả cuối cùng:
+C = FE1500E8D79A942EA43EEAC2EF13F094

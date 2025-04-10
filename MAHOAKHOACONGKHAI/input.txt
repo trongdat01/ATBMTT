@@ -1,0 +1,8 @@
+# Diffie-Hellman parameters
+7523 5 387 247
+# RSA parameters (p, q, e, M)
+47 71 61 59
+# ElGamal parameters (q, a, xA, k, M)
+7433 3 341 872 403
+# DSA parameters (p, q, h, xA, k, H(M))
+47 23 34 2 10 8

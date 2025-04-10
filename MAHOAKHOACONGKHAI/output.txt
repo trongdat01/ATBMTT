@@ -1,0 +1,94 @@
+NHÓM 1
+MÃ HÓA KHÓA CÔNG KHAI
+
+1. Trao đổi khóa Diffie-Hellman
+q = 7523, a = 5
+An chọn khóa riêng xA = 387
+Ba chọn khóa riêng xB = 247
+
+a) Cách An tính ra khóa công khai yA và khóa phiên K:
+   yA = a^xA mod q = 5^387 mod 7523 = 2221
+   K = yB^xA mod q = 7477^387 mod 7523 = 7466
+
+b) Cách Ba tính ra khóa công khai yB và khóa phiên K:
+   yB = a^xB mod q = 5^247 mod 7523 = 7477
+   K = yA^xB mod q = 2221^247 mod 7523 = 7466
+
+2. Thuật toán RSA - Bài toán 1
+p = 47, q = 71, e = 61
+
+a) Khóa công khai của An:
+   PU = {e, n} = {61, 3337}
+
+b) Cách An tạo ra khóa riêng:
+   Tính φ(n) = (p-1)(q-1) = (47-1)(71-1) = 3220
+   Tìm d sao cho e*d ≡ 1 (mod φ(n)): 61*d ≡ 1 (mod 3220)
+   d = 2481
+   PR = {d, n} = {2481, 3337}
+
+c) Cách An tạo bản mã hóa thông điệp M = 59:
+   C = M^e mod n = 59^61 mod 3337 = 3026
+
+d) Cách người nhận giải mã bản mã C:
+   M = C^d mod n = 3026^2481 mod 3337 = 59
+
+e) Việc mã hóa ở câu c) thực hiện nhiệm vụ chữ ký số.
+   Khi người gửi (An) dùng khóa riêng để mã hóa, đây là quá trình tạo chữ ký số.
+
+3. Thuật toán RSA - Bài toán 2:
+p = 47, q = 71, e = 61
+
+a) Khóa công khai của An:
+   PU = {e, n} = {61, 3337}
+
+b) Cách An tạo ra khóa riêng:
+   Tính φ(n) = (p-1)(q-1) = (47-1)(71-1) = 3220
+   Tìm d sao cho e*d ≡ 1 (mod φ(n)): 61*d ≡ 1 (mod 3220)
+   d = 2481
+   PR = {d, n} = {2481, 3337}
+
+c) Cách người gửi (Ba) mã hóa thông điệp M = 59 để gửi cho An:
+   C = M^e mod n = 59^61 mod 3337 = 3026
+
+d) Cách An giải mã bản mã C:
+   M = C^d mod n = 3026^2481 mod 3337 = 59
+
+e) Việc mã hóa ở câu c) thực hiện nhiệm vụ bảo mật.
+   Khi người gửi dùng khóa công khai của người nhận để mã hóa, đây là quá trình bảo mật thông điệp.
+
+4. Mật mã ElGamal
+q = 7433, a = 3, xA = 341
+
+a) Khóa công khai của An:
+   yA = a^xA mod q = 3^341 mod 7433 = 2124
+   PU = {q, a, yA} = {7433, 3, 2124}
+
+b) Ba chọn số k = 872 để mã hóa bản tin M = 403 gửi cho An. Bản mã là:
+   C1 = a^k mod q = 3^872 mod 7433 = 2235
+   C2 = M * yA^k mod q = 403 * 2124^872 mod 7433 = 7094
+   (C1, C2) = (2235, 7094)
+
+c) Cách An giải bản mã (C1, C2):
+   Tính s = C1^xA mod q = 2235^341 mod 7433 = 3190
+   Tính s^(-1) mod q = 240
+   M = C2 * s^(-1) mod q = 7094 * 240 mod 7433 = 403
+
+5. CHỮ KÝ ĐIỆN TỬ DSA
+p = 47, q = 23, h = 34, xA = 2, k = 10, H(M) = 8
+
+a) Khóa công khai của An:
+   g = h^((p-1)/q) mod p = 34^((47-1)/23) mod 47 = 28
+   yA = g^xA mod p = 28^2 mod 47 = 32
+
+b) Chữ ký số của An cho bản tin M:
+   r = (g^k mod p) mod q = (28^10 mod 47) mod 23 = 4
+   s = k^(-1)(H(M) + xA * r) mod q = 7*(8 + 2*4) mod 23 = 20
+   (r, s) = (4, 20)
+
+c) Cách Ba xác minh chữ ký số được đính kèm với bản tin M:
+   w = s^(-1) mod q = 20^(-1) mod 23 = 15
+   u1 = H(M) * w mod q = 8 * 15 mod 23 = 5
+   u2 = r * w mod q = 4 * 15 mod 23 = 14
+   v = (g^u1 * yA^u2 mod p) mod q = (28^5 * 32^14 mod 47) mod 23 = 4
+   Kiểm tra: v = 4, r = 4
+   Chữ ký đúng: v == r

@@ -1,0 +1,152 @@
+KẾT QUẢ TÍNH TOÁN
+
+Bài 1: TÍNH LŨY THỪA MODULO BẰNG CÁCH HẠ BẬC LŨY THỪA
+Input: a = 499; m = 6337; n = 6337
+Tính b = a^m mod n = 499^6337 mod 6337 bằng hạ bậc lũy thừa
+Biểu diễn m = 6337 dưới dạng nhị phân: 1100011000001
+Khởi tạo: b = 1
+x = a mod n = 499 mod 6337 = 499
+Bit thứ 1 là 1 → b = b * x mod n = 499
+x = x^2 mod n = 1858
+Bit thứ 2 là 1 → b = b * x mod n = 1940
+x = x^2 mod n = 4836
+x = x^2 mod n = 3366
+x = x^2 mod n = 5737
+x = x^2 mod n = 5128
+Bit thứ 6 là 1 → b = b * x mod n = 5567
+x = x^2 mod n = 4171
+Bit thứ 7 là 1 → b = b * x mod n = 1189
+x = x^2 mod n = 2176
+x = x^2 mod n = 1237
+x = x^2 mod n = 2952
+x = x^2 mod n = 929
+x = x^2 mod n = 1209
+x = x^2 mod n = 4171
+Bit thứ 13 là 1 → b = b * x mod n = 3785
+Kết quả: b = 499
+Output: b = 499
+
+Bài 2: TÌM NGHỊCH ĐẢO MODULO
+Input: a = 2705; n = 6577
+Tìm nghịch đảo modulo x = a^(-1) mod n = 2705^(-1) mod 6577
+Sử dụng thuật toán Euclid mở rộng:
+GCD(2705, 6577) = 1
+x = 2801
+Kiểm tra: (a * x) mod n = (2705 * 2801) mod 6577 = 1
+Output: x = 2801
+
+Bài 3: TÍNH LŨY THỪA MODULO SỬ DỤNG ĐỊNH LÝ FERMAT
+Input: a = 281; m = 764; n = 6967
+Tính b = a^m mod n = 281^764 mod 6967 sử dụng định lý Fermat
+n = 6967 là số nguyên tố, nên áp dụng định lý Fermat: a^(p-1) ≡ 1 (mod p) nếu gcd(a, p) = 1
+gcd(281, 6967) = 1, nên a^764 ≡ a^(764 mod 6966) ≡ a^764 (mod 6967)
+Tính a^764 mod 6967 = 667
+Kết quả: b = 667
+Output: b = 667
+
+Bài 4: TÍNH GIÁ TRỊ HÀM EULER
+Input: n = 2863
+Tính hàm Euler φ(2863)
+Phân tích 2863 thành thừa số nguyên tố: 2863 = 7^1 * 409^1
+Áp dụng công thức tích Euler:
+φ(n) = n * ∏(1 - 1/p) với p là các ước số nguyên tố của n
+φ(2863) = 2863 * (1 - 1/7) * (1 - 1/409) = 2448
+Output: φ(n) = 2448
+
+Bài 5: TÍNH LŨY THỪA MODULO SỬ DỤNG ĐỊNH LÝ EULER
+Input: a = 27; m = 2201; n = 5400
+Tính b = a^m mod n = 27^2201 mod 5400 sử dụng định lý Euler
+Tính φ(5400) = 1440
+gcd(27, 5400) ≠ 1, nên không áp dụng được định lý Euler
+Tính trực tiếp a^2201 mod 5400
+Kết quả: b = 27
+Output: b = 27
+
+Bài 6: TÍNH LŨY THỪA MODULO SỬ DỤNG ĐỊNH LÝ SỐ DƯ TRUNG HOA
+Input: a = 101; k = 76; n = 49913
+Tính b = a^k mod n = 101^76 mod 49913 sử dụng định lý số dư Trung Hoa
+Phân tích 49913 thành thừa số nguyên tố: 49913 = 19^1 * 37^1 * 71^1
+Tính a^76 mod 19:
+  φ(19) = 18
+  gcd(101, 19) = 1, nên a^76 ≡ a^(76 mod φ(19)) ≡ a^4 (mod 19)
+  a^4 mod 19 = 4
+Tính a^76 mod 37:
+  φ(37) = 36
+  gcd(101, 37) = 1, nên a^76 ≡ a^(76 mod φ(37)) ≡ a^4 (mod 37)
+  a^4 mod 37 = 10
+Tính a^76 mod 71:
+  φ(71) = 70
+  gcd(101, 71) = 1, nên a^76 ≡ a^(76 mod φ(71)) ≡ a^6 (mod 71)
+  a^6 mod 71 = 45
+Giải hệ phương trình đồng dư sau:
+  x ≡ 4 (mod 19)
+  x ≡ 10 (mod 37)
+  x ≡ 45 (mod 71)
+Áp dụng định lý số dư Trung Hoa, ta có: x = 33273
+Vậy b = a^k mod n = 33273
+Output: b = 33273
+
+Bài 7: GIẢI HỆ PHƯƠNG TRÌNH MODULO SỬ DỤNG ĐỊNH LÝ SỐ DƯ TRUNG HOA
+Input: m1 = 11; m2 = 13; m3 = 17; a1 = 6; a2 = 2; a3 = 4
+Giải hệ phương trình đồng dư:
+  x ≡ 6 (mod 11)
+  x ≡ 2 (mod 13)
+  x ≡ 4 (mod 17)
+Tính M = m1 * m2 * m3 = 11 * 13 * 17 = 2431
+M1 = M / m1 = 2431 / 11 = 221
+M2 = M / m2 = 2431 / 13 = 187
+M3 = M / m3 = 2431 / 17 = 143
+Tính các nghịch đảo modulo:
+  y1 = M1^(-1) mod m1 = 221^(-1) mod 11 = 1
+  y2 = M2^(-1) mod m2 = 187^(-1) mod 13 = 8
+  y3 = M3^(-1) mod m3 = 143^(-1) mod 17 = 5
+Tính kết quả theo công thức:
+  x = (a1 * M1 * y1 + a2 * M2 * y2 + a3 * M3 * y3) mod M
+  x = (6 * 221 * 1 + 2 * 187 * 8 + 4 * 143 * 5) mod 2431
+  x = 2316
+Kiểm tra kết quả:
+  2316 mod 11 = 6 ≡ 6 (mod 11)
+  2316 mod 13 = 2 ≡ 2 (mod 13)
+  2316 mod 17 = 4 ≡ 4 (mod 17)
+Output: x = 2316
+
+Bài 8: KIỂM TRA CĂN NGUYÊN THỦY
+Input: a = 11; n = 293
+Kiểm tra xem 11 có phải là căn nguyên thủy của 293 không
+Tính φ(293) = 292
+Phân tích φ(293) = 292 thành thừa số nguyên tố: 292 = 2^2 * 73^1
+Kiểm tra điều kiện: a^(φ(n)/p) ≢ 1 (mod n) với mọi ước số nguyên tố p của φ(n)
+  Kiểm tra a^(φ(n)/2) mod n = 11^146 mod 293 = 292
+  Kiểm tra a^(φ(n)/73) mod n = 11^4 mod 293 = 284
+Kiểm tra thêm: tất cả 11^k mod 293 với k = 1, 2, ..., φ(n) - 1 phải khác nhau
+Kết quả: 11 là căn nguyên thủy của 293
+Output: 11 là căn nguyên thủy của 293
+
+Bài 9: TÌM LOGARIT RỜI RẠC
+Input: a = 3; b = 8; n = 19
+Tìm logarit rời rạc k = log_3 8 (mod 19)
+Sử dụng thuật toán 'baby-step giant-step':
+Tính m = ⌈√19⌉ = 5
+Bước 1: Tính bảng các giá trị a^j mod n với j = 0, 1, ..., m-1
+  a^0 mod 19 = 1
+  a^1 mod 19 = 3
+  a^2 mod 19 = 9
+  a^3 mod 19 = 8
+  a^4 mod 19 = 5
+Bước 2: Tính a^(-m) mod 19
+  a^(-1) mod 19 = 13
+  a^(-m) mod 19 = 14
+Bước 3: Tìm i và j sao cho b * (a^(-m))^i ≡ a^j (mod 19)
+  Tìm thấy: b * (a^(-m))^0 = 8 ≡ a^3 (mod 19)
+  Vậy k = i*m + j = 0*5 + 3 = 3
+Kiểm tra: a^k mod n = 3^3 mod 19 = 8 ≡ 8 (mod 19)
+Output: k = 3
+
+Bài 10: TÍNH CÁC BIỂU THỨC MODULO CƠ BẢN
+Input: a = 83; b = 17; x = 354; y = 314; n = 241
+A1 = (a*x + b*y) mod n = (83*354 + 17*314) mod 241 = 16
+A2 = (a*x - b*y) mod n = (83*354 - 17*314) mod 241 = 185
+A3 = (a*x * b*y) mod n = (83*354 * 17*314) mod 241 = 3
+A4 = (b*y)^(-1) mod n = (17*314)^(-1) mod 241 = 154
+A5 = (a*x / b*y) mod n = (a*x * (b*y)^(-1)) mod n = (83*354 * 154) mod 241 = 53
+Output: A1 = 16; A2 = 185; A3 = 3; A4 = 154; A5 = 53

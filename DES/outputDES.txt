@@ -1,0 +1,220 @@
+BÀI TẬP MÃ HÓA DES
+NHÓM 1
+Đang tìm file: d:/Download/CODE/DES/inputDES.txt
+Đã đọc 2 dòng từ file.
+INPUT:    K = 3FF81CDA5F417784;
+          M = FF1C9CA3596B7D48;
+
+PHẦN 2: MÃ HÓA
+4. Tính hoán vị IP đối với bản tin M:
+Input: M = FF1C9CA3596B7D48, IP (xem tài liệu mục 3.2 DES)
+Output: L0 = F1574779, R0 = 0D69F729
+
+PHẦN 1: SINH KHÓA Ki từ khóa K
+1. Tính hoán vị PC1 đối với khóa K:
+Input: K = 3FF81CDA5F417784, PC1 (xem tài liệu mục 3.2 DES)
+Output: C0 = 8A7A435, D0 = 59D51FF
+
+2. Tính các giá trị dịch vòng Ci, Di:
+Input: C0 = 8A7A435, D0 = 59D51FF, si (xem tài liệu mục 3.2 DES)
+C1 = 14F486B, D1 = B3AA3FE
+C2 = 29E90D6, D2 = 67547FD
+C3 = A7A4358, D3 = 9D51FF5
+C4 = 9E90D62, D4 = 7547FD6
+C5 = 7A4358A, D5 = D51FF59
+C6 = E90D629, D6 = 547FD67
+C7 = A4358A7, D7 = 51FF59D
+C8 = 90D629E, D8 = 47FD675
+C9 = 21AC53D, D9 = 8FFACEA
+C10 = 86B14F4, D10 = 3FEB3AA
+C11 = 1AC53D2, D11 = FFACEA8
+C12 = 6B14F48, D12 = FEB3AA3
+C13 = AC53D21, D13 = FACEA8F
+C14 = B14F486, D14 = EB3AA3F
+C15 = C53D21A, D15 = ACEA8FF
+C16 = 8A7A435, D16 = 59D51FF
+
+3. Tính khóa Ki cho vòng lặp thứ i:
+Input: Ci, Di (kết quả bài 2), PC2 (xem tài liệu mục 3.2 DES)
+K1 = E15B08FC964F
+K2 = 3630EA6B95FC
+K3 = BA445449FDAF
+K4 = 4C4B1C6E5CBD
+K5 = 06B13DCB59FF
+K6 = 8F0C6387DBB9
+K7 = EB6AA8D31F75
+K8 = 98B788DB8BBC
+K9 = B308C695E6EE
+K10 = 386AB0BCBEC5
+K11 = 94353CBAE6F7
+K12 = C606553FEF83
+K13 = 4FDA24BE6553
+K14 = 8AB1EAEFE346
+K15 = B8466BF4E7CA
+K16 = 3D9A9257BD5D
+
+==========  CHI TIẾT VÒNG LẶP THỨ NHẤT ==============
+5. Tính hàm mở rộng nửa phải E[R0]:
+Input: R0 = 0D69F729, E (xem tài liệu mục 3.2 DES)
+
+6. Thực hiên XOR ER0 với khóa K1:
+Input: ER0 (kết quả bài 5), K1 = E15B08FC964F
+
+7. Thực hiện phép thế S-box đối với B:
+Input: A (kết quả bài 6), 8 bảng Si, i = 1, 2, ..., 8 (xem tài liệu mục 3.2 DES)
+
+8. Thực hiện hoán vị P đối với SB:
+Input: B (kết quả bài 7), P (xem tài liệu mục 3.2 DES)
+Output: ER0 = 85AB53FAE952
+Output: A = 64F05B067F1D
+Output: B = S(A) = 9EDAEC99
+Output: F = 5FCD09DB
+
+========= THỰC HIỆN VÒNG LẶP THỨ NHẤT =================
+9. Thực hiện vòng lặp thứ nhất:
+Input: L0 = F1574779; R0 = 0D69F729, F = 5FCD09DB
+Output: L1 = R0 = 0D69F729; R1 = L0 ⊕ F = AE9A4EA2
+
+========= THỰC HIỆN VÒNG LẶP THỨ 2 ==========
+10. Thực hiện vòng lặp thứ 2:
+Input: L1 = 0D69F729; R1 = AE9A4EA2
+Output: ER0 = 55D4F425D505
+Output: A = 63E41E4E40F9
+Output: B = S(A) = 5F1F0F03
+Output: F = D46AF85A
+Output: L2 = R1 = AE9A4EA2; R2 = L1 ⊕ f(R1,K2) = D9030F73
+
+========= THỰC HIỆN VÒNG LẶP THỨ 3 ==========
+10. Thực hiện vòng lặp thứ 3:
+Input: L2 = AE9A4EA2; R2 = D9030F73
+Output: ER0 = EF280685EBA7
+Output: A = 556C52CC1608
+Output: B = S(A) = CD42FA56
+Output: F = 33FFC0B0
+Output: L3 = R2 = D9030F73; R3 = L2 ⊕ f(R2,K3) = 9D658E12
+
+========= THỰC HIỆN VÒNG LẶP THỨ 4 ==========
+10. Thực hiện vòng lặp thứ 4:
+Input: L3 = D9030F73; R3 = 9D658E12
+Output: ER0 = 4FAB0BC5C0A5
+Output: A = 03E017AB9C18
+Output: B = S(A) = EFACD6A5
+Output: F = 61ACDF7D
+Output: L4 = R3 = 9D658E12; R4 = L3 ⊕ f(R3,K4) = B8AFD00E
+
+========= THỰC HIỆN VÒNG LẶP THỨ 5 ==========
+10. Thực hiện vòng lặp thứ 5:
+Input: L4 = 9D658E12; R4 = B8AFD00E
+Output: ER0 = 5F155FEA005D
+Output: A = 59A4622159A2
+Output: B = S(A) = C0267DDB
+Output: F = 3AD6B88D
+Output: L5 = R4 = B8AFD00E; R5 = L4 ⊕ f(R4,K5) = A7B3369F
+
+========= THỰC HIỆN VÒNG LẶP THỨ 6 ==========
+10. Thực hiện vòng lặp thứ 6:
+Input: L5 = B8AFD00E; R5 = A7B3369F
+Output: ER0 = D0FDA69AD4FF
+Output: A = 5FF1C51D0F46
+Output: B = S(A) = B99BC034
+Output: F = 87CC4762
+Output: L6 = R5 = A7B3369F; R6 = L5 ⊕ f(R5,K6) = 3F63976C
+
+========= THỰC HIỆN VÒNG LẶP THỨ 7 ==========
+10. Thực hiện vòng lặp thứ 7:
+Input: L6 = A7B3369F; R6 = 3F63976C
+Output: ER0 = 1FEB07CAEB58
+Output: A = F481AF19F42D
+Output: B = S(A) = 66E81838
+Output: F = 7A018754
+Output: L7 = R6 = 3F63976C; R7 = L6 ⊕ f(R6,K7) = DDB2B1CB
+
+========= THỰC HIỆN VÒNG LẶP THỨ 8 ==========
+10. Thực hiện vòng lặp thứ 8:
+Input: L7 = 3F63976C; R7 = DDB2B1CB
+Output: ER0 = EFBDA55A3E57
+Output: A = 770A2D81B5EB
+Output: B = S(A) = 358D4BCA
+Output: F = 98367353
+Output: L8 = R7 = DDB2B1CB; R8 = L7 ⊕ f(R7,K8) = A755E43F
+
+========= THỰC HIỆN VÒNG LẶP THỨ 9 ==========
+10. Thực hiện vòng lặp thứ 9:
+Input: L8 = DDB2B1CB; R8 = A755E43F
+Output: ER0 = D0EAABF081FF
+Output: A = 63E26D656711
+Output: B = S(A) = 5F3D346C
+Output: F = EC18D4FE
+Output: L9 = R8 = A755E43F; R9 = L8 ⊕ f(R8,K9) = 31AA6535
+
+========= THỰC HIỆN VÒNG LẶP THỨ 10 ==========
+10. Thực hiện vòng lặp thứ 10:
+Input: L9 = A755E43F; R9 = 31AA6535
+Output: ER0 = 9A3D5430A9AA
+Output: A = A257E48C176F
+Output: B = S(A) = DA198A8D
+Output: F = DDA88863
+Output: L10 = R9 = 31AA6535; R10 = L9 ⊕ f(R9,K10) = 7AFD6C5C
+
+========= THỰC HIỆN VÒNG LẶP THỨ 11 ==========
+10. Thực hiện vòng lặp thứ 11:
+Input: L10 = 31AA6535; R10 = 7AFD6C5C
+Output: ER0 = 3F57FAB582F8
+Output: A = AB62C60F640F
+Output: B = S(A) = 6643BA34
+Output: F = F36186B0
+Output: L11 = R10 = 7AFD6C5C; R11 = L10 ⊕ f(R10,K11) = C2CBE385
+
+========= THỰC HIỆN VÒNG LẶP THỨ 12 ==========
+10. Thực hiện vòng lặp thứ 12:
+Input: L11 = 7AFD6C5C; R11 = C2CBE385
+Output: ER0 = E05657F07C0B
+Output: A = 265002CF9388
+Output: B = S(A) = EAADF6D6
+Output: F = E3BE93ED
+Output: L12 = R11 = C2CBE385; R12 = L11 ⊕ f(R11,K12) = 9943FFB1
+
+========= THỰC HIỆN VÒNG LẶP THỨ 13 ==========
+10. Thực hiện vòng lặp thứ 13:
+Input: L12 = C2CBE385; R12 = 9943FFB1
+Output: ER0 = CF2A07FFFDA3
+Output: A = 80F0234198F0
+Output: B = S(A) = 4EAF80B0
+Output: F = C3489555
+Output: L13 = R12 = 9943FFB1; R13 = L12 ⊕ f(R12,K13) = 018376D0
+
+========= THỰC HIỆN VÒNG LẶP THỨ 14 ==========
+10. Thực hiện vòng lặp thứ 14:
+Input: L13 = 9943FFB1; R13 = 018376D0
+Output: ER0 = 003C06BAD6A0
+Output: A = 8A8DEC5535E6
+Output: B = S(A) = 1A37F1C1
+Output: F = E55C3887
+Output: L14 = R13 = 018376D0; R14 = L13 ⊕ f(R13,K14) = 7C1FC736
+
+========= THỰC HIỆN VÒNG LẶP THỨ 15 ==========
+10. Thực hiện vòng lặp thứ 15:
+Input: L14 = 018376D0; R14 = 7C1FC736
+Output: ER0 = 3F80FFE0E9AC
+Output: A = 87C694140E66
+Output: B = S(A) = F2482CE1
+Output: F = 50918ECB
+Output: L15 = R14 = 7C1FC736; R15 = L14 ⊕ f(R14,K15) = 5112F81B
+
+========= THỰC HIỆN VÒNG LẶP THỨ 16 ==========
+10. Thực hiện vòng lặp thứ 16:
+Input: L15 = 7C1FC736; R15 = 5112F81B
+Output: ER0 = AA28A57F00F6
+Output: A = 97B23728BDAB
+Output: B = S(A) = 856BAC8A
+Output: F = 99C340DD
+Output: L16 = R15 = 5112F81B; R16 = L15 ⊕ f(R15,K16) = E5DC87EB
+
+========= KẾT THÚC VÒNG LẶP THỨ 16 ======================
+11. Thực hiện hoán vị cuối cùng IP-1:
+Input: L16 = 5112F81B; R16 = E5DC87EB, IP-1 (xem tài liệu mục 3.2 DES)
+Output: C = C727541BBA49D95D; (bản mã cần tìm)
+
+============ KẾT QUẢ MÃ HÓA ========================
+
+OUTPUT: C = C727541BBA49D95D
