@@ -1,2 +1,15 @@
+// HƯỚNG DẪN CÁCH NHẬP INPUT CHO THUẬT TOÁN DES
+//
+// Định dạng file:
+// - Dòng 1: Chuỗi hex biểu diễn thông điệp cần mã hóa (64 bit = 16 ký tự hex)
+// - Dòng 2: Chuỗi hex biểu diễn khóa mã hóa (64 bit = 16 ký tự hex)
+//
+// Lưu ý:
+// - Chỉ nhập các ký tự hex hợp lệ (0-9, A-F)
+// - Không thêm khoảng trắng hoặc ký tự đặc biệt
+// - Mỗi dòng phải đúng 16 ký tự
+// - Các dòng bắt đầu bằng "//" sẽ được coi là comment và bị bỏ qua
+//
+// Bài tập nhóm 1:
 FF1C9CA3596B7D48
 3FF81CDA5F417784

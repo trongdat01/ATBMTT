@@ -1,2 +1,15 @@
+// HƯỚNG DẪN CÁCH NHẬP INPUT CHO THUẬT TOÁN AES-128
+//
+// Định dạng file:
+// - Dòng 1: Chuỗi hex biểu diễn thông điệp cần mã hóa (128 bit = 32 ký tự hex)
+// - Dòng 2: Chuỗi hex biểu diễn khóa mã hóa (128 bit = 32 ký tự hex)
+//
+// Lưu ý:
+// - Chỉ nhập các ký tự hex hợp lệ (0-9, A-F)
+// - Không thêm khoảng trắng hoặc ký tự đặc biệt
+// - Mỗi dòng phải đúng 32 ký tự
+// - Các dòng bắt đầu bằng "//" sẽ được coi là comment và bị bỏ qua
+//
+// Bài tập nhóm 1:
 18DC9095F9149EDB7323F20E4E462D92
 CFD61D489E7C48BC46C9F875C1F04E1B

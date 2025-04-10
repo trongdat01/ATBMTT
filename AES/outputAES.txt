@@ -1,7 +1,7 @@
 BÀI TẬP NHÓM 1
 NỘI DUNG MÃ HÓA BÀI TẬP AES-128
 Đang tìm file: d:/Download/CODE/AES/inputAES.txt
-Đã đọc 2 dòng từ file.
+Đã đọc 15 dòng từ file.
 M = 18DC9095F9149EDB7323F20E4E462D92
 K = CFD61D489E7C48BC46C9F875C1F04E1B
 

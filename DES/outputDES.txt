@@ -1,7 +1,7 @@
 BÀI TẬP MÃ HÓA DES
 NHÓM 1
 Đang tìm file: d:/Download/CODE/DES/inputDES.txt
-Đã đọc 2 dòng từ file.
+Đã đọc 15 dòng từ file.
 INPUT:    K = 3FF81CDA5F417784;
           M = FF1C9CA3596B7D48;
 

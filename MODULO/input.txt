@@ -1,20 +1,20 @@
-# Bài 1: Tính lũy thừa modulo (hạ bậc)
+# Bài 1: Tính lũy thừa modulo (hạ bậc) (Nhập a m n)
 499 6337 6337
-# Bài 2: Tìm nghịch đảo modulo
+# Bài 2: Tìm nghịch đảo modulo (Nhập a n)
 2705 6577
-# Bài 3: Lũy thừa modulo (Fermat)
+# Bài 3: Lũy thừa modulo (Fermat) (Nhập a m n)
 281 764 6967
-# Bài 4: Tính hàm Euler
+# Bài 4: Tính hàm Euler (Nhập n)
 2863
-# Bài 5: Lũy thừa modulo (Euler)
+# Bài 5: Lũy thừa modulo (Euler) (Nhập a m n)
 27 2201 5400
-# Bài 6: Lũy thừa modulo (số dư Trung Hoa)
+# Bài 6: Lũy thừa modulo (số dư Trung Hoa) (Nhập a k n)
 101 76 49913
-# Bài 7: Giải hệ phương trình modulo
+# Bài 7: Giải hệ phương trình modulo (Nhập m1 m2 m3 a1 a2 a3)
 11 13 17 6 2 4
-# Bài 8: Kiểm tra căn nguyên thủy
+# Bài 8: Kiểm tra căn nguyên thủy (Nhập a n)
 11 293
-# Bài 9: Tìm logarit rời rạc
+# Bài 9: Tìm logarit rời rạc (Nhập a b n)
 3 8 19
-# Bài 10: Biểu thức modulo cơ bản
+# Bài 10: Biểu thức modulo cơ bản (Nhập a b x y n)
 83 17 354 314 241
